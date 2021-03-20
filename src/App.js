@@ -5,6 +5,7 @@ import Home from "./Components/Home/Home";
 import Login from "./Components/Login/Login";
 import DestinationSearch from "./Components/DestinationSearch/DestinationSearch";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
+import Footer from "./Components/Footer/Footer";
 
 export const UserContext = createContext();
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route exact path="/" component={Home} />
           </Switch>
         </Router>
+        <Footer />
       </UserContext.Provider>
     </div>
   );
