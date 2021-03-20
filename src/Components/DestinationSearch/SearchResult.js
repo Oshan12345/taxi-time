@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import data from "../../fakeData";
-const SearchResult = ({ location, vehicle }) => {
+const SearchResult = ({ location, vehicle, date }) => {
   const [vehicleImg, setVehicleImg] = useState("");
 
   useEffect(() => {
@@ -15,10 +15,16 @@ const SearchResult = ({ location, vehicle }) => {
           <div className="col-12">
             <div className="p-3 border bg-info">
               <p>
-                <i className="bi bi-geo-fill"></i> From : {location.pickForm}
+                <i className="bi bi-calendar2-check-fill"></i>
+                <b> Date : </b> {date.toString()}
               </p>
               <p>
-                <i className="bi bi-geo-fill"></i> To : {location.destination}
+                <i className="bi bi-geo-fill"></i> <b>From :</b>{" "}
+                {location.pickForm}
+              </p>
+              <p>
+                <i className="bi bi-geo-fill"></i> <b>To :</b>{" "}
+                {location.destination}
               </p>
             </div>
           </div>

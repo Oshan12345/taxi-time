@@ -3,6 +3,7 @@ import LocationInputForm from "./LocationInputForm.js";
 import SearchResult from "./SearchResult.js";
 import { useParams } from "react-router";
 import GoogleMaps from "./GoogleMap.js";
+import DatePick from "./DatePick.js";
 
 const DestinationSearch = () => {
   let { vehicle } = useParams();
@@ -13,6 +14,8 @@ const DestinationSearch = () => {
     destination: "",
   });
 
+  const [date, setDate] = useState("");
+
   const handleLocationInput = (e) => {
     const newLocation = { ...location };
 
@@ -22,11 +25,15 @@ const DestinationSearch = () => {
 
   const handleSearchResult = (e) => {
     e.preventDefault();
-    if (location.pickForm && location.destination) {
+    if (location.pickForm && location.destination && date) {
       setIsShowResult(true);
     } else {
       setIsShowResult(false);
     }
+  };
+
+  const handleTimeInput = (time) => {
+    setDate(time);
   };
 
   return (
@@ -35,9 +42,13 @@ const DestinationSearch = () => {
 
       <div className="d-flex flex-column flex-md-row justify-content-between">
         {isShowResult ? (
-          <SearchResult location={location} vehicle={vehicle} />
+          <SearchResult location={location} vehicle={vehicle} date={date} />
         ) : (
           <div className="">
+            <div className="mb-2">
+              <p>Select date and time</p>
+              <DatePick handleTimeInput={handleTimeInput} />
+            </div>
             <LocationInputForm
               handleLocationInput={handleLocationInput}
               handleSearchResult={handleSearchResult}
