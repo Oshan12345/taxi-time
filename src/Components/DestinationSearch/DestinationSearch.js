@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import LocationInputForm from "./LocationInputForm.js";
-import mapImg from "../../images/Map.png";
 import SearchResult from "./SearchResult.js";
 import { useParams } from "react-router";
+import GoogleMaps from "./GoogleMap.js";
+
 const DestinationSearch = () => {
   let { vehicle } = useParams();
   const [isShowResult, setIsShowResult] = useState(false);
@@ -25,7 +26,6 @@ const DestinationSearch = () => {
       setIsShowResult(true);
     } else {
       setIsShowResult(false);
-      console.log("please fill both fields");
     }
   };
 
@@ -44,8 +44,14 @@ const DestinationSearch = () => {
             />
           </div>
         )}
-        <div>
-          <img src={mapImg} alt="" />
+        <div
+          className="google-map mx-4"
+          style={{
+            width: "-webkit-fill-available",
+            height: "-webkit-fill-available",
+          }}
+        >
+          <GoogleMaps />
         </div>
       </div>
     </div>

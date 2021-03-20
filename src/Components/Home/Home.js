@@ -8,7 +8,6 @@ const Home = () => {
   useEffect(() => {
     setTransportVehicle(data);
   }, []);
-  console.log(transportVehicles);
   return (
     <div className="home-component mt-4 container ">
       <div className="mt-5 home-elements">

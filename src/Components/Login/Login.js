@@ -1,94 +1,3 @@
-// import React, { useState } from "react";
-// import { Link } from "react-router-dom";
-// import "./Login.css";
-// import { emailValidation, passwordValidation } from "./ValidationFunction";
-// const Login = () => {
-//   const [showToast, setShowToast] = useState(false);
-//   const [emailError, setEmailError] = useState("");
-
-//   const toastMessage = () => {
-//     setShowToast(true);
-//     setTimeout(() => {
-//       setShowToast(false);
-//     }, 3000);
-//   };
-//   const validateEmail = (e) => {
-//     let message = emailValidation(e);
-//     setEmailError(message);
-//     toastMessage();
-//   };
-
-//   return (
-//     <div className=" p-5 m-auto login-form img-fluid">
-//       <h5 className="text-center">Log in using email ans password</h5>
-//       <form>
-//         <div className="mb-3 email-input">
-//           <label htmlFor="exampleInputEmail1" className="form-label">
-//             Email address :{/*  */}
-//             <div
-//               className={`d-flex text-white bg-primary toast-message ${
-//                 showToast ? "d-block" : "d-none "
-//               }`}
-//             >
-//               <div className="toast-body">{emailError}</div>
-//               <i className="bi bi-caret-down-fill"></i>
-//             </div>
-//             {/*  */}
-//           </label>
-//           <input
-//             className="form-control"
-//             id="exampleInputEmail1"
-//             name="email"
-//             type="text"
-//             id="userEmail"
-//             aria-describedby="emailHelp"
-//             required
-//             onChange={(e) => validateEmail(e)}
-//           />
-//         </div>
-//         <div className="mb-3">
-//           <label htmlFor="exampleInputPassword1" className="form-label">
-//             Password :
-//           </label>
-//           <input
-//             type="password"
-//             className="form-control"
-//             id="exampleInputPassword1"
-//             required
-//           />
-//         </div>
-
-//         <div className="submit-button">
-//           <button type="submit" className="btn btn-primary">
-//             Log in
-//           </button>
-//         </div>
-//         <div className="mb-3 form-check text-center">
-//           <p className="text-decoration-underline">
-//             Don't have an account ?<Link to="/signup"> Sign Up </Link>
-//           </p>
-//         </div>
-//       </form>
-//       <div className="K-1uj Z7p_S">
-//         <div className="s311c"></div>
-//         <div className="_0tv-g">or</div>
-//         <div className="s311c"></div>
-//       </div>
-//       <div className="submit-button">
-//         <button type="submit" className="btn btn-primary">
-//           <i className="bi bi-google"></i> Continue with google
-//         </button>
-//       </div>
-//       <div className="submit-button mt-2">
-//         <button type="submit" className="btn btn-primary">
-//           <i className="bi bi-facebook"></i> Continue with Facebook
-//         </button>
-//       </div>
-//     </div>
-//   );
-// };
-
-//export default Login;
 import {
   facebookSignIn,
   googleSignIn,
@@ -101,11 +10,12 @@ import "./Login.css";
 import { emailValidation, passwordValidation } from "./ValidationFunction";
 import { UserContext } from "../../App";
 import { Link, useHistory, useLocation } from "react-router-dom";
+
 const Login = () => {
   let history = useHistory();
   let location = useLocation();
   const [user, setUser] = useContext(UserContext);
-  //console.log("sagar, user is here", user);
+
   initializeFirebaseApp();
   const [displayUserNameField, setDisplayUserNameField] = useState(false);
   const [showEmailToast, setShowEmailToast] = useState(false);
@@ -124,14 +34,12 @@ const Login = () => {
   let { from } = location.state || { from: { pathname: "/" } };
   const toastEmailMessage = () => {
     setShowEmailToast(true);
-
     setTimeout(() => {
       setShowEmailToast(false);
     }, 3000);
   };
   const toastPasswordMessage = () => {
     setShowPasswordToast(true);
-
     setTimeout(() => {
       setShowPasswordToast(false);
     }, 3000);
@@ -162,7 +70,6 @@ const Login = () => {
     const newUser = { ...userInfo };
     if (isFieldValid) {
       newUser[e.target.name] = e.target.value;
-      // setUserInfo(newUser);
     } else {
       newUser[e.target.name] = "";
     }
@@ -171,18 +78,13 @@ const Login = () => {
 
   const handleGoogleSignIn = () => {
     googleSignIn().then((res) => {
-      console.log(res);
-      // setUser(res);
-      // history.replace(from);
       if (res.name || res.email) {
         setUser(res);
         history.replace(from);
       } else {
-        console.log("inside error message-", res);
         handleErrorMessage(res);
       }
     });
-    // .catch((err) => handleErrorMessage(err));
   };
 
   const handleEmailSignIn = (e) => {
@@ -193,20 +95,15 @@ const Login = () => {
         userInfo.email,
         userInfo.password
       ).then((res) => {
-        // setUser(res);
-        // history.replace(from);
-        console.log("hello from email sign in function", res);
         if (res.name || res.email) {
           const newUser = { ...res };
           newUser.name = userInfo.name;
           setUser(newUser);
           history.replace(from);
         } else {
-          console.log("inside error message-", res);
           handleErrorMessage(res);
         }
       });
-      // .catch((err) => handleErrorMessage(err));
     } else {
       handleErrorMessage(
         "sorry password does not match or password strength is weak. Your password should have minimum length of 8 characters containing at least 1 lower case,1 uppercase, 1 number, 1 symbol."
@@ -215,41 +112,26 @@ const Login = () => {
   };
   const handleFacebookLogin = () => {
     facebookSignIn().then((res) => {
-      // setUser(res);
-      // history.replace(from);
       if (res.name || res.email) {
         setUser(res);
         history.replace(from);
       } else {
-        console.log("inside error message-", res);
         handleErrorMessage(res);
       }
     });
-    // .catch((err) => handleErrorMessage(err));
   };
   const handleLogIn = (e) => {
-    console.log("login button is clicked");
     e.preventDefault();
     login(userInfo.email, userInfo.password).then((res) => {
       if (res.name || res.email) {
-        console.log("kkkkkkkkkkk", res);
         setUser(res);
         history.replace(from);
       } else {
-        console.log("inside error message-", res);
         handleErrorMessage(res);
       }
-
-      console.log("hi", res.name);
-
-      console.log("inside response", res);
     });
-    // .catch((err) => {
-    //   handleErrorMessage(err);
-    //   console.log("inside error -", err);
-    // });
   };
-  console.log(userInfo);
+
   return (
     <div className=" p-5 m-auto login-form img-fluid">
       <h3 className="text-center">
@@ -279,7 +161,7 @@ const Login = () => {
             className="form-label"
             style={{ fontSize: 12 }}
           >
-            Email address :{/*  */}
+            Email address :
             <div
               className={`d-flex text-white ${
                 emailValidationMessage.acceptEmail ? "bg-success" : "bg-danger"
@@ -296,18 +178,15 @@ const Login = () => {
                 }  `}
               ></i>
             </div>
-            {/*  */}
           </label>
           <input
             className="form-control"
             id="exampleInputEmail1"
             name="email"
             type="text"
-            // id="userEmail"
             aria-describedby="emailHelp"
             required
             onChange={inputChange}
-            //   onChange={(e) => validateEmail(e)}
           />
         </div>
         <div className="mb-3">
@@ -316,7 +195,7 @@ const Login = () => {
             className="form-label password-input"
             style={{ fontSize: 12 }}
           >
-            Password :{" "}
+            Password :
             {displayUserNameField &&
               "Your password should have minimum length of 8 characters containing at least 1 lower case,1 uppercase, 1 number, 1 symbol."}
             <div
@@ -347,7 +226,6 @@ const Login = () => {
             required
             name="password"
             onChange={inputChange}
-            // onChange={(e) => validatePassword(e.target.value)}
           />
         </div>
         {displayUserNameField && (
@@ -364,16 +242,9 @@ const Login = () => {
               onChange={inputChange}
             />
           </div>
-        )}{" "}
+        )}
         <div>
           {displayUserNameField ? (
-            // <button
-            //   type="submit"
-            //   className="btn btn-primary w-100"
-            //   onClick={handleEmailSignIn}
-            // >
-            //   Create an account
-            // </button>
             <input type="submit" className="w-100 btn text-white bg-primary" />
           ) : (
             <div>
@@ -419,10 +290,10 @@ const Login = () => {
       </form>
       <p className="text-center text-danger">{errorMessage}</p>
       {}
-      <div className="K-1uj Z7p_S">
-        <div className="s311c"></div>
-        <div className="_0tv-g">or</div>
-        <div className="s311c"></div>
+      <div className="break-line">
+        <div className="break-line-div "></div>
+        <div className="break-line-div-middle">or</div>
+        <div className="break-line-div "></div>
       </div>
       <div className="submit-button">
         <button

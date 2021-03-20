@@ -5,7 +5,6 @@ import { logOut } from "../Login/FirebaseCode/LoginMethods";
 const Navbar = () => {
   let history = useHistory();
   const [user, setUser] = useContext(UserContext);
-  console.log(user);
 
   const handleLogOut = () => {
     setUser({
@@ -37,7 +36,7 @@ const Navbar = () => {
           className="collapse navbar-collapse justify-content-end"
           id="navbarSupportedContent"
         >
-          <div className="d-flex ">
+          <div className="d-flex flex-column flex-md-row ">
             <Link to="/" className="mx-3 fs-5 text-decoration-none text-dark">
               Home
             </Link>

@@ -23,9 +23,7 @@ position: relative;
     width:100%
 }
 
-.Z7p_S {
-    margin: 10px 40px 18px;
-}.K-1uj {
+.break-line { margin: 10px 40px 18px;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -webkit-flex-direction: row;
@@ -33,7 +31,7 @@ position: relative;
     flex-direction: row;
     display: flex
 }
-.s311c {
+.break-line-div {
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
@@ -47,7 +45,7 @@ position: relative;
     position: relative;
     top: .45em;
 }
-._0tv-g {
+.break-line-div-middle {
     color: #8e8e8e;
     color: rgba(var(--f52,142,142,142),1);
     -webkit-box-flex: 0;
@@ -63,7 +61,7 @@ position: relative;
     margin: 0 18px;
     text-transform: uppercase;
 }
-.s311c {
+/* .s311c {
     -webkit-box-flex: 1;
     -webkit-flex-grow: 1;
     -ms-flex-positive: 1;
@@ -76,7 +74,7 @@ position: relative;
     height: 1px;
     position: relative;
     top: .45em;
-}
+} */
 @media only screen and (min-width: 600px) {
  .login-form{
     width: 50%;

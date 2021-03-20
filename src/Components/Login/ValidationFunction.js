@@ -29,7 +29,6 @@ const passwordValidation = (value) => {
   } else {
     message.text = "Weak password";
   }
-
   return message;
 };
 

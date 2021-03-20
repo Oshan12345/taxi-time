@@ -9,8 +9,8 @@ const SearchResult = ({ location, vehicle }) => {
   }, [vehicle]);
 
   return (
-    <div>
-      <div className="container">
+    <div className="mb-4">
+      <div className="container m-auto" style={{ maxWidth: "420px" }}>
         <div className="row g-2">
           <div className="col-12">
             <div className="p-3 border bg-info">
