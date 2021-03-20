@@ -1,0 +1,10 @@
+ .home-component{
+      position: relative;   
+      background: linear-gradient( #ffffff,#dfdfdfb7,#c0c0c08e, #bbb6b673,#68686838,transparent),
+      url('../../images/background.jpg')  no-repeat center ; 
+      background-size: cover; 
+      background-attachment: fixed;     
+ }
+  .home-elements{
+    min-height: 80vh;
+  }
