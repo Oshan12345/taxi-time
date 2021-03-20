@@ -31,7 +31,7 @@ const Login = () => {
     password: "",
     confirmPassword: "",
   });
-  let { from } = location.state || { from: { pathname: "/" } };
+  let { from } = location.state || { from: { pathname: "/destination" } };
   const toastEmailMessage = () => {
     setShowEmailToast(true);
     setTimeout(() => {

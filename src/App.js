@@ -6,6 +6,9 @@ import Login from "./Components/Login/Login";
 import DestinationSearch from "./Components/DestinationSearch/DestinationSearch";
 import PrivateRoute from "./Components/PrivateRoute/PrivateRoute";
 import Footer from "./Components/Footer/Footer";
+import Destination from "./Components/Destination/Destination";
+import Blog from "./Components/Blog/Blog";
+import Contact from "./Components/Contact/Contact";
 
 export const UserContext = createContext();
 function App() {
@@ -23,6 +26,11 @@ function App() {
             <PrivateRoute path="/search-destination/:vehicle">
               <DestinationSearch />
             </PrivateRoute>
+            <PrivateRoute path="/destination">
+              <Destination />
+            </PrivateRoute>
+            <Route path="/blog" component={Blog} />
+            <Route path="/contact" component={Contact} />
             <Route path="/login" component={Login} />
             <Route exact path="/" component={Home} />
           </Switch>

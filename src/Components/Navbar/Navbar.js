@@ -16,7 +16,7 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light container">
+    <nav className="navbar navbar-expand-lg navbar-light bg-light rounded container">
       <div className="container-fluid">
         <Link className="navbar-brand fw-bold fs-4" to="/">
           Taxi Time
@@ -41,16 +41,25 @@ const Navbar = () => {
               Home
             </Link>
 
-            <Link className="mx-3 fs-5 text-decoration-none text-dark" to="#">
+            <Link
+              className="mx-3 fs-5 text-decoration-none text-dark"
+              to="/destination"
+            >
               Destination
             </Link>
 
-            <Link className="mx-3 fs-5 text-decoration-none text-dark" to="#">
+            <Link
+              className="mx-3 fs-5 text-decoration-none text-dark"
+              to="/blog"
+            >
               {" "}
               Blog
             </Link>
 
-            <Link className="mx-3 fs-5 text-decoration-none text-dark" to="#">
+            <Link
+              className="mx-3 fs-5 text-decoration-none text-dark"
+              to="/contact"
+            >
               Contact
             </Link>
 

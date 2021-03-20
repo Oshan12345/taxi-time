@@ -1,0 +1,34 @@
+.banner-div{
+  position: relative;
+  
+}
+
+
+.banner{  
+    background: linear-gradient( #f8f9fa41,#f8f9fa8c, #ffffff23,transparent),
+      url("https://images.pexels.com/photos/4039921/pexels-photo-4039921.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940") ;
+  width: 100%; 
+    height: 400px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+    background-size: cover;    
+    filter: blur(6px);
+  -webkit-filter: blur(6px);
+
+}
+
+.children{
+  max-width: 400px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #26262d85;
+  padding: 20px;
+  border-radius: 10px;
+  color:white
+}
+
+
+      
